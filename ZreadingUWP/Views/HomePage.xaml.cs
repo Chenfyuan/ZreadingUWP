@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ZreadingUWP.Model;
+using ZreadingUWP.Service;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
 
@@ -36,7 +37,7 @@ namespace ZreadingUWP.Views
             if (e.NavigationMode == NavigationMode.New)
             {
 
-                listview.ItemsSource = _zreading_list = new ZreadingList("http://www.zreading.cn/page/");
+                listview.ItemsSource = _zreading_list = new ZreadingList(BasicURL.HOME_URL);
 
                 _zreading_list.LoadMoreStarted += _zreading_list_LoadMoreStarted;
                 _zreading_list.LoadMoreEnd += _zreading_list_LoadMoreEnd;

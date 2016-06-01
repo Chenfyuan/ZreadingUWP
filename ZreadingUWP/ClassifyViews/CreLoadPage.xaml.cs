@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ZreadingUWP.Model;
+using ZreadingUWP.Service;
 using ZreadingUWP.Views;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
@@ -29,7 +30,7 @@ namespace ZreadingUWP.ClassifyViews
         public CreLoadPage()
         {
             this.InitializeComponent();
-            _zreading_list = new ZreadingList("http://www.zreading.cn/archives/category/to_create/page/");
+            _zreading_list = new ZreadingList(BasicURL.CREATE_ROAD);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
