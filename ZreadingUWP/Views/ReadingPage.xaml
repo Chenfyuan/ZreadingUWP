@@ -1,0 +1,86 @@
+﻿<Page
+    x:Class="ZreadingUWP.Views.ReadingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ZreadingUWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal" >
+            <AppBarButton Icon="Message" Label="显示评论" x:Name="showmsg"/>
+            <AppBarButton Icon="Favorite" Label="本地收藏" x:Name="loshoucang"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"  Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Background="Transparent"
+                    Width="48"
+                    Height="43"
+                    HorizontalAlignment="Left"
+                    BorderThickness="0" 
+                    Click="onclick"
+                   
+                    Grid.Column="0">
+                <Button.Content>
+                    <SymbolIcon Symbol="Back"/>
+                </Button.Content>
+            </Button>
+            <TextBlock Text="详情" 
+                       VerticalAlignment="Center"
+                       FontSize="22"
+                      
+                       Grid.Column="1"/>
+            <Button Background="Transparent"
+                    Width="48"
+                    Height="43"
+                    HorizontalAlignment="Left"
+                    BorderThickness="0"                  
+                   
+                    Grid.Column="2"
+                    ToolTipService.ToolTip="更多"
+                    >
+                <Button.Content>
+                    <SymbolIcon Symbol="More"/>
+                </Button.Content>
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="刷新" x:Name="refreshme" Click="refreshme_Click"></MenuFlyoutItem>
+                        <MenuFlyoutSeparator/>
+                        <MenuFlyoutItem Text="查看原文" x:Name="lookme" Click="lookme_Click"></MenuFlyoutItem>
+                        <MenuFlyoutItem Text="复制链接"></MenuFlyoutItem>
+                    </MenuFlyout>
+
+
+
+
+                </Button.Flyout>
+            </Button>
+        </Grid>
+
+        <ProgressBar Grid.Row="1" 
+                     x:Name="lr"
+                     Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" 
+                     Background="{x:Null}"
+                     HorizontalAlignment="Center" 
+                     VerticalAlignment="Center"
+                     Width="200" IsIndeterminate="True"
+                     />
+        <WebView x:Name="web" NavigationCompleted="web_NavigationCompleted"                               
+                 Loaded="web_Loaded" 
+                 Grid.Row="1" />
+
+    </Grid>
+</Page>

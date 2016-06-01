@@ -5,9 +5,126 @@
     xmlns:local="using:ZreadingUWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:c="using:ZreadingUWP.Model"
+   xmlns:my="using:ZreadingUWP.Views"
+     NavigationCacheMode="Enabled" 
+    Loaded="Root_Loaded"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!-- Adaptive triggers -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SamplesSplitView.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="SamplesSplitView.IsPaneOpen" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SamplesSplitView.DisplayMode" Value="Overlay"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="48"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <SplitView x:Name="SamplesSplitView" 
+                       OpenPaneLength="240"
+                       Grid.Row="1"
+                  
+                       Grid.ColumnSpan="2" DisplayMode="CompactOverlay">
+            <SplitView.Pane>
+                <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Button Style="{StaticResource SplitViewTogglePaneButtonStyle}"
+                          Height="48" 
+                Click="ShowSliptView" 
+                   
+                Grid.Row="0"/>
+
+
+                    <ListView x:Name="menulist" Grid.Row="1">
+                        <ListViewItem x:Name="home" Tapped="home_Tapped">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon  Symbol="Home"/>
+                                <TextBlock Text="首页" Margin="24,0,0,0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="hot" Tapped="hot_Tapped">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE763;" 
+                                   FontSize="22" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       TextAlignment="Center"
+                                    />
+                                <TextBlock Text="热文" Margin="24,0,0,0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Library"/>
+                                <TextBlock Text="书库" Margin="24,0,0,0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="classifytap" Tapped="classifytap_Tapped">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="List"/>
+                                <TextBlock Text="分类" Margin="24,0,0,0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="myfavorite" Tapped="myfavorite_Tapped">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Favorite"/>
+                                <TextBlock Text="我的收藏" Margin="24,0,0,0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+                    <Line X1="10" StrokeThickness="2" 
+                                  Margin="0 7 0 0" 
+                                  Stretch="UniformToFill"
+                                  Stroke="LightGray" 
+                                  Grid.Row="2"  />
+                    <ListView Grid.Row="3" Margin="0,0,0,48">
+                        <ListViewItem>
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon  Symbol="Contact"/>
+                                <TextBlock Text="登录" Margin="24,0,0,0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="setting" Tapped="setting_Tapped">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon  Symbol="Setting" VerticalAlignment="Center" HorizontalAlignment="Stretch"></SymbolIcon>
+                                <TextBlock Text="设置" Margin="24,0,0,0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame x:Name="contentframe" Grid.Column="0" x:FieldModifier="public">
+                    <Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <NavigationThemeTransition/>
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>
+                </Frame>
+            </SplitView.Content>
+        </SplitView>
     </Grid>
 </Page>

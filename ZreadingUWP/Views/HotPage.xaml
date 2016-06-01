@@ -1,0 +1,131 @@
+﻿<Page
+    x:Class="ZreadingUWP.Views.HotPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ZreadingUWP.Views"
+     xmlns:c="using:ZreadingUWP.Model"
+    xmlns:p="using:ZreadingUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+     NavigationCacheMode="Enabled" Loaded="Page_Loaded"
+    >
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="bar" >
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="settingbtn" Label="设置"  Click="settingbtn_Click"/>
+            </CommandBar.SecondaryCommands>
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Home" Label="首页" x:Name="homepage" Click="homepage_Click"/>
+            <AppBarButton Label="热文"   Icon="Bookmarks" x:Name="hotpage" Click="hotpage_Click" />
+            <AppBarButton Label="书库" Icon="Library"  />
+            <AppBarButton Label="分类" Icon="List" x:Name="classify" Click="classify_Click"/>
+            <AppBarButton Label="我的收藏" Icon="Favorite" x:Name="fav" Click="fav_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="bar.Visibility" Value="Collapsed"/>
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="bar.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0" 
+              Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="热文" 
+                       VerticalAlignment="Center"
+                       FontSize="18"
+                       Margin="20,0,0,0"/>
+            <Button Grid.Column="1"
+                    Content="更多" 
+                    Background="Transparent"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    
+                    >
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="今日热门" Click="MenuFlyoutItem_Click"/>
+                        <MenuFlyoutSeparator/>
+                        <MenuFlyoutItem Text="近100天文章排行" Click="MenuFlyoutItem_Click_1"/>
+                        <MenuFlyoutSeparator/>
+                        <MenuFlyoutItem Text="总的文章排行" Click="MenuFlyoutItem_Click_2"/>
+                    </MenuFlyout>
+                </Button.Flyout>
+
+            </Button>
+        </Grid>
+        <ProgressRing IsActive="True" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Height="80" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="loading"/>
+        <ListView x:Name="listview" Grid.Row="1"
+                              IsItemClickEnabled="True"                                                          
+                              ShowsScrollingPlaceholders="True"                   
+                      ItemClick="listview_ItemClick">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="c:Zreading">
+                    <Grid Margin="0,5,0,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind Title}"
+                                               TextWrapping="Wrap" 
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               Margin="5,0,0,0" 
+                                               FontWeight="Bold"                                              
+                                               Grid.Column="1"
+                                               />
+                        <Line X1="10" StrokeThickness="1" 
+                                  Margin="0 7 0 0" 
+                                  Stretch="UniformToFill"
+                                  Stroke="LightGray" 
+                                  Grid.Row="1"  
+                                  Grid.ColumnSpan="2"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Header>
+                <StackPanel Background="{ThemeResource SystemControlBackgroundAccentBrush}" >
+                    <TextBlock  Text="今日热门"
+                                    Height="30" 
+                                    FontSize="22" 
+                                    Foreground="White"
+                                    x:Name="tbk"
+                                    Margin="10,0,0,0"/>
+                </StackPanel>
+            </ListView.Header>
+        </ListView>
+    </Grid>
+</Page>

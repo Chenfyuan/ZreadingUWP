@@ -1,0 +1,80 @@
+﻿<Page
+    x:Class="ZreadingUWP.Views.ClassifyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ZreadingUWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationCacheMode="Enabled"
+    mc:Ignorable="d">
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="bar" >
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="settingbtn" Label="设置"  Click="settingbtn_Click"/>
+                <AppBarButton x:Name="totopbtn" Label="返回顶部"  Click="totopbtn_Click"/>
+            </CommandBar.SecondaryCommands>
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Home" Label="首页" x:Name="homepa" Click="homepa_Click" />
+            <AppBarButton Label="热文"   Icon="Bookmarks" x:Name="hotart" Click="hotart_Click"/>
+            <AppBarButton Label="书库" Icon="Library"  />
+            <AppBarButton Label="分类" Icon="List" x:Name="classify" Click="classify_Click"/>
+            <AppBarButton Label="我的收藏" Icon="Favorite" x:Name="fav" Click="fav_Click"/>
+
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="bar.Visibility" Value="Collapsed"/>
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="bar.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="通往成功" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="5" Background="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="passtosubtn" Click="passtosubtn_Click"/>
+            <Button Content="创造之路" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="5" Background="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="creloadbtn" Click="creloadbtn_Click"/>
+            <Button Content="心灵旅途" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="5" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
+            <Button Content="思维乐趣" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="5" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
+            <Button Content="投资策略" Grid.Row="0"  Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="5" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
+            <Button Content="教育日记" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="5" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
+            <Button Content="温情故事" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="5" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
+            <Button Content="生活观察" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="5" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
+            <Button Content="风云印象" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="5" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
+            <Button Content="my_teaching" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="5" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
+        </Grid>
+        <Frame Grid.Row="1" x:Name="classifyframe"/>
+    </Grid>
+</Page>
