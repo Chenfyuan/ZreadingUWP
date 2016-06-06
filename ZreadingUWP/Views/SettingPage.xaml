@@ -5,14 +5,22 @@
     xmlns:local="using:ZreadingUWP.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="using:ZreadingUWP.Theme"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <!--<DataTemplate x:Key="mycolor">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Fill="{Binding Colorc}" Width="16" Height="16" Margin="5,0,10,0" x:Name="recolor"/>
+                <TextBlock Text="{Binding ColorName}"/>
+            </StackPanel>
+        </DataTemplate>-->
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Name="panec" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*"/>
@@ -45,15 +53,60 @@
                         <ToggleSwitch  x:Name="tog" VerticalAlignment="Top" HorizontalAlignment="Stretch" Toggled="tog_Toggled" />
                     </StackPanel>
                     <TextBlock Text="主题色"/>
-                    <ComboBox x:Name="selectcolor" Width="200" SelectionChanged="selectcolor_SelectionChanged">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
+                    <ComboBox x:Name="selectcolor" Width="200" SelectionChanged="selectcolor_SelectionChanged"   >
+                        <ComboBoxItem IsSelected="True">
+                            <ComboBoxItem.Content>
+                                <TextBlock Text="默认" Margin="31,0,10,0"/>
+                            </ComboBoxItem.Content>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <ComboBoxItem.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Fill="{Binding Colorc}" Width="16" Height="16" Margin="5,0,10,0" x:Name="recolor"/>
-                                    <TextBlock Text="{Binding ColorName}"/>
+                                    <Rectangle Fill="Pink" Width="16" Height="16" Margin="5,0,10,0" x:Name="recolor"/>
+                                    <TextBlock Text="少女粉"/>
                                 </StackPanel>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
+                            </ComboBoxItem.Content>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <ComboBoxItem.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Fill="Red" Width="16" Height="16" Margin="5,0,10,0" />
+                                    <TextBlock Text="姨妈红"/>
+                                </StackPanel>
+                            </ComboBoxItem.Content>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <ComboBoxItem.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Fill="Yellow" Width="16" Height="16" Margin="5,0,10,0" />
+                                    <TextBlock Text="咸蛋黄"/>
+                                </StackPanel>
+                            </ComboBoxItem.Content>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <ComboBoxItem.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Fill="Green" Width="16" Height="16" Margin="5,0,10,0" />
+                                    <TextBlock Text="早苗绿"/>
+                                </StackPanel>
+                            </ComboBoxItem.Content>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <ComboBoxItem.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Fill="Blue" Width="16" Height="16" Margin="5,0,10,0" />
+                                    <TextBlock Text="胖次蓝"/>
+                                </StackPanel>
+                            </ComboBoxItem.Content>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <ComboBoxItem.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Fill="Purple" Width="16" Height="16" Margin="5,0,10,0"/>
+                                    <TextBlock Text="基佬紫"/>
+                                </StackPanel>
+                            </ComboBoxItem.Content>
+                        </ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
             </PivotItem>

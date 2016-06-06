@@ -120,17 +120,34 @@ namespace ZreadingUWP.Views
 
         private void find_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
+         //   var bb = args.QueryText;
+         //此方法不实现
 
         }
 
         private void find_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
+            //此处实现搜索建议功能
+            var autosuggesbox = sender;
+            var _aulist = _list.Where(k => k.Title.StartsWith(autosuggesbox.Text.Trim().ToString()));
+            autosuggesbox.ItemsSource = _aulist;
+
+
 
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             //ChangeTheme.changeTheme(this.Frame);//夜间模式切换
+        }
+
+        private void find_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            var tt = args.SelectedItem as Zreading;
+            if (tt != null && tt is Zreading)
+            {
+                this.Frame.Navigate(typeof(ReadingPage), tt);
+            }
         }
     }
 }

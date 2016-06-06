@@ -55,6 +55,8 @@ namespace ZreadingUWP.Model
         public ImageSource ExpIcon { get; set; }
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
+      
+
+       
     }
 }

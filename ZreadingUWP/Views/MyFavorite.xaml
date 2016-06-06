@@ -56,7 +56,7 @@
                             QueryIcon="Find"
                             Margin="0,0,15,0"
                             PlaceholderText="请输入要查找的标题"
-                            BorderBrush="Green" QuerySubmitted="find_QuerySubmitted" TextChanged="find_TextChanged"
+                            BorderBrush="Green" QuerySubmitted="find_QuerySubmitted" TextChanged="find_TextChanged" SuggestionChosen="find_SuggestionChosen"
                             >
                 <AutoSuggestBox.ItemTemplate>
                     <DataTemplate x:DataType="c:Zreading">

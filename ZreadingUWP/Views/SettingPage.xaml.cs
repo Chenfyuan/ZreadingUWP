@@ -29,12 +29,13 @@ namespace ZreadingUWP.Views
             List<Themes> _colorlist = new List<Themes>();
 
             this.InitializeComponent();
-            _colorlist.Add(new Themes { Colorc = "pink", ColorName = "少女粉" });
-            _colorlist.Add(new Themes { Colorc = "red", ColorName = "姨妈红" });
-            _colorlist.Add(new Themes { Colorc = "yellow", ColorName = "咸蛋黄" });
-            _colorlist.Add(new Themes { Colorc = "green", ColorName = "早苗绿" });
-            _colorlist.Add(new Themes { Colorc = "blue", ColorName = "胖次蓝" });
-            _colorlist.Add(new Themes { Colorc = "purple", ColorName = "基佬紫" });
+            //_colorlist.Add(new Themes { Colorc = "pink", ColorName = "少女粉" });
+            //_colorlist.Add(new Themes { Colorc = "red", ColorName = "姨妈红" });
+            //_colorlist.Add(new Themes { Colorc = "yellow", ColorName = "咸蛋黄" });
+            //_colorlist.Add(new Themes { Colorc = "green", ColorName = "早苗绿" });
+            //_colorlist.Add(new Themes { Colorc = "blue", ColorName = "胖次蓝" });
+            //_colorlist.Add(new Themes { Colorc = "purple", ColorName = "基佬紫" });
+            //_colorlist.Add(new Themes { Colorc = "Transparent", ColorName = "跟随系统" });
             this.InitializeComponent();
             if (localSettings.Values["theme"] != null)
             {
@@ -50,7 +51,7 @@ namespace ZreadingUWP.Views
                     // RequestedTheme = ElementTheme.Dark;
                 }
             }
-            selectcolor.ItemsSource = _colorlist;
+           // selectcolor.ItemsSource = _colorlist;
         }
         private void onclick(object sender, RoutedEventArgs e)
         {
@@ -85,14 +86,39 @@ namespace ZreadingUWP.Views
 
         private void selectcolor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            /*
+             *  _colorlist.Add(new Themes { Colorc = "pink", ColorName = "少女粉" });
+            _colorlist.Add(new Themes { Colorc = "red", ColorName = "姨妈红" });
+            _colorlist.Add(new Themes { Colorc = "yellow", ColorName = "咸蛋黄" });
+            _colorlist.Add(new Themes { Colorc = "green", ColorName = "早苗绿" });
+            _colorlist.Add(new Themes { Colorc = "blue", ColorName = "胖次蓝" });
+            _colorlist.Add(new Themes { Colorc = "purple", ColorName = "基佬紫" });
+             */
+            //更改颜色
             switch (selectcolor.SelectedIndex)
             {
-                case 0:
-                   // panec.Background = new SolidColorBrush(Colors.Pink);
-                    break;
                 case 1:
-                   // panec.Background = new SolidColorBrush(Colors.Red);
+                panec.Background = new SolidColorBrush(Colors.Pink);
                     break;
+                case 2:
+                  panec.Background = new SolidColorBrush(Colors.Red);
+                    break;
+                case 3:
+                    panec.Background = new SolidColorBrush(Colors.Yellow);
+                    break;
+                case 4:
+                    panec.Background = new SolidColorBrush(Colors.Green);
+                    break;
+                case 5:
+                    panec.Background = new SolidColorBrush(Colors.Blue);
+                    break;
+                case 6:
+                    panec.Background = new SolidColorBrush(Colors.Purple);
+                    break;
+                default:
+                    panec.Background= new SolidColorBrush(Colors.Transparent);
+                    break;
+
 
             }
 
