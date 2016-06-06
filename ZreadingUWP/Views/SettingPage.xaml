@@ -63,7 +63,7 @@
                             <ComboBoxItem.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Fill="Pink" Width="16" Height="16" Margin="5,0,10,0" x:Name="recolor"/>
-                                    <TextBlock Text="少女粉"/>
+                                    <TextBlock Text="少女粉" Foreground="Pink"/>
                                 </StackPanel>
                             </ComboBoxItem.Content>
                         </ComboBoxItem>
@@ -71,7 +71,7 @@
                             <ComboBoxItem.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Fill="Red" Width="16" Height="16" Margin="5,0,10,0" />
-                                    <TextBlock Text="姨妈红"/>
+                                    <TextBlock Text="姨妈红" Foreground="Red"/>
                                 </StackPanel>
                             </ComboBoxItem.Content>
                         </ComboBoxItem>
@@ -79,7 +79,7 @@
                             <ComboBoxItem.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Fill="Yellow" Width="16" Height="16" Margin="5,0,10,0" />
-                                    <TextBlock Text="咸蛋黄"/>
+                                    <TextBlock Text="咸蛋黄" Foreground="Yellow"/>
                                 </StackPanel>
                             </ComboBoxItem.Content>
                         </ComboBoxItem>
@@ -87,7 +87,7 @@
                             <ComboBoxItem.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Fill="Green" Width="16" Height="16" Margin="5,0,10,0" />
-                                    <TextBlock Text="早苗绿"/>
+                                    <TextBlock Text="早苗绿" Foreground="Green"/>
                                 </StackPanel>
                             </ComboBoxItem.Content>
                         </ComboBoxItem>
@@ -95,7 +95,7 @@
                             <ComboBoxItem.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Fill="Blue" Width="16" Height="16" Margin="5,0,10,0" />
-                                    <TextBlock Text="胖次蓝"/>
+                                    <TextBlock Text="胖次蓝" Foreground="Blue"/>
                                 </StackPanel>
                             </ComboBoxItem.Content>
                         </ComboBoxItem>
@@ -103,7 +103,7 @@
                             <ComboBoxItem.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Fill="Purple" Width="16" Height="16" Margin="5,0,10,0"/>
-                                    <TextBlock Text="基佬紫"/>
+                                    <TextBlock Text="基佬紫" Foreground="Purple"/>
                                 </StackPanel>
                             </ComboBoxItem.Content>
                         </ComboBoxItem>
